@@ -32,6 +32,11 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
+// Enable CORS with PATCH method allowed
+app.use(cors({
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+}));
+
 /* FILE STORAGE */
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
